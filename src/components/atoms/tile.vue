@@ -1,10 +1,10 @@
 <template>
-    <div class="tile" :class="[state == -1 ? '' : (state ? 'red' : 'green')]"></div>
+    <div class="tile" :class="[state]"></div>
 </template>
 
 <script setup>
     defineProps({
-        state: Number
+        state: String
     })
 </script>
 
