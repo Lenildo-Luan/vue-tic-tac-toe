@@ -1,9 +1,9 @@
 <template>
     <div class="tic-tac-toe">
         <Title content="Tic-Tac-Toe"/>
-        <CtaBanner v-if="winner" />
+        <CtaBanner v-if="winner" @new-game="newGame" />
         <Subtitle v-else :content="`Player's ${player.toUpperCase()} turn`"/>
-        <TileGrid :player="player" @click="changePlayer" @finish-game="finishGame"/>
+        <TileGrid ref="tileGridRef" :player="player" @click="changePlayer" @finish-game="finishGame"/>
     </div>
 </template>
 
@@ -16,9 +16,14 @@
 
     const player = ref('red')
     const winner = ref('')
+    const tileGridRef = ref(null)
 
     const changePlayer = () => player.value === 'red' ? player.value = 'green' : player.value = 'red'
     const finishGame = () => winner.value = player.value
+    const newGame = () => {
+        winner.value = ''
+        tileGridRef.value.cleanGrid()
+    }
 </script>
 
 <style scoped>

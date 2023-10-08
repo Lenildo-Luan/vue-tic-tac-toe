@@ -1,7 +1,7 @@
 <template>
     <div class="cta-banner">
         <Headline content="Player RED wins!" />
-        <Button content="New Game" />
+        <Button content="New Game" @click="$emit('newGame')"/>
     </div>
 </template>
 

@@ -43,6 +43,12 @@
         tileStates[index].state = props.player
         if(hasWinning()) emit('finishGame')
     }
+
+    const cleanGrid = () => tileStates.forEach(el => el.state = '')
+    
+    defineExpose({
+        cleanGrid
+    })
 </script>
 
 <style scoped>
